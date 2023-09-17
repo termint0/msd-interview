@@ -11,9 +11,10 @@ DEFAULT_FILE = 'data.txt'
 @app.route('/occurrence_counter/file', methods=['POST'], endpoint='count_occurrences_in_file')
 def count_occurrences_in_file():
     file = request.files.get('file')
+    n = int(request.args.get('n', -1))
     if file:
         try:
-            occurrences = occurrence_counter.get_occurrences_from_file(file)
+            occurrences = occurrence_counter.get_occurrences_from_file(file, n)
             return {'occurrences': occurrences}
         except Exception as e:
             return {'error': str(e)}, 500        
