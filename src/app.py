@@ -18,7 +18,7 @@ def count_occurrences_in_file():
         except Exception as e:
             return {'error': str(e)}, 500        
 
-@app.route('/occurrence_counter', methods=['GET'], endpoint="count_occurrences_in_default")
+@app.route('/occurrence_counter/default', methods=['GET'], endpoint="count_occurrences_in_default")
 def count_occurrences_in_default():
     n = int(request.args.get('n', -1))
     try:
